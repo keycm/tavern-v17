@@ -273,15 +273,15 @@ if ($result_testimonials->num_rows > 0) {
     </section>
 
     <section class="upcoming-events-section common-padding">
-    <div class="container">
-        <div class="section-heading-v2">
-            <div class="sub-title">Don't Miss Out</div>
-            <div class="title-with-lines">
-                <div class="line"></div>
-                <h2 class="main-title">Upcoming Events</h2>
-                <div class="line"></div>
+        <div class="container">
+            <div class="section-heading-v2">
+                <div class="sub-title">Don't Miss Out</div>
+                <div class="title-with-lines">
+                    <div class="line"></div>
+                    <h2 class="main-title">Upcoming Events</h2>
+                    <div class="line"></div>
+                </div>
             </div>
-        </div>
             <div class="slider-container">
                 <div class="slider-wrapper">
                     <?php 
@@ -297,12 +297,17 @@ if ($result_testimonials->num_rows > 0) {
                                     $date_display .= " - " . $end_date_formatted;
                                 }
                             }
-                            echo '<div class="slider-item"><div class="event-card">';
-                            echo '<img src="' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['title']) . '">';
-                            echo '<span class="event-date">' . htmlspecialchars($date_display) . '</span>';
-                            echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
-                            echo '<p>' . substr(htmlspecialchars($row['description']), 0, 100) . '...</p>';
-                            echo '</div></div>';
+                            // The event card is wrapped in a slider-item for slider functionality
+                            echo '<div class="slider-item">
+                                    <div class="event-card">
+                                        <img src="' . htmlspecialchars($row['image']) . '" alt="' . htmlspecialchars($row['title']) . '">
+                                        <div class="card-content">
+                                            <span class="event-date">' . htmlspecialchars($date_display) . '</span>
+                                            <h3>' . htmlspecialchars($row['title']) . '</h3>
+                                            <p>' . substr(htmlspecialchars($row['description']), 0, 100) . '...</p>
+                                        </div>
+                                    </div>
+                                  </div>';
                         }
                     }
                     ?>
